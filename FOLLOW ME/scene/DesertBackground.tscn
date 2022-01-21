@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://texture/Desert/DesertBackground/BG-sky.png" type="Texture" id=1]
 [ext_resource path="res://texture/Desert/DesertBackground/BG-mountains.png" type="Texture" id=2]
 [ext_resource path="res://texture/Desert/DesertBackground/BG-sun.png" type="Texture" id=3]
 [ext_resource path="res://texture/Desert/DesertBackground/BG-ruins.png" type="Texture" id=4]
 [ext_resource path="res://scene/Camera2D.gd" type="Script" id=5]
+[ext_resource path="res://soundeffect/Chase - Lance Conrad.mp3" type="AudioStream" id=6]
 
 [node name="DesertBackground" type="Node2D"]
 
@@ -53,3 +54,7 @@ centered = false
 position = Vector2( 0, 360 )
 current = true
 script = ExtResource( 5 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+autoplay = true
