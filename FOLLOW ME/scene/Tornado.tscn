@@ -58,9 +58,10 @@ __meta__ = {
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( -162.625, -231.5 )
-scale = Vector2( 1.31826, 2.09063 )
+position = Vector2( -90.9995, -128 )
+scale = Vector2( 0.863495, 1.44375 )
 frames = SubResource( 5 )
+frame = 1
 playing = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
