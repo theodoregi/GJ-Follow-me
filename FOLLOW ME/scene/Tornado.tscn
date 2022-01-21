@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://texture/tornado.png" type="Texture" id=1]
 [ext_resource path="res://soundeffect/tornado-sound-effect.mp3" type="AudioStream" id=2]
+[ext_resource path="res://scene/Tornado.gd" type="Script" id=3]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -51,12 +52,15 @@ tracks/0/keys = {
 }
 
 [node name="Tornado" type="Node2D"]
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_horizontal_guides_": [ -815.0 ]
+}
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( -18, -397 )
-scale = Vector2( 2.23651, 3.125 )
+position = Vector2( -162.625, -231.5 )
+scale = Vector2( 1.31826, 2.09063 )
 frames = SubResource( 5 )
-frame = 1
 playing = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]

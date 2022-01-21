@@ -50,6 +50,5 @@ texture = ExtResource( 4 )
 centered = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 0, 360 )
 current = true
 script = ExtResource( 5 )
