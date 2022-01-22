@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Enregistrement.mp3-de43942a6c75d4aa54f2bf0987c8ead4.mp3str"
+
+[deps]
+
+source_file="res://soundeffect/Enregistrement.mp3"
+dest_files=[ "res://.import/Enregistrement.mp3-de43942a6c75d4aa54f2bf0987c8ead4.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
