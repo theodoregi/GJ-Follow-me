@@ -7,6 +7,7 @@ extents = Vector2( 64, 7 )
 
 [node name="Planck" type="RigidBody2D"]
 collision_mask = 0
+gravity_scale = 0.0
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )

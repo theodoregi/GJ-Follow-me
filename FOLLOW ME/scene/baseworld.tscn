@@ -9,7 +9,7 @@
 [node name="UI" parent="." instance=ExtResource( 1 )]
 
 [node name="DesertBackground" parent="." instance=ExtResource( 3 )]
-position = Vector2( -402, 328 )
+position = Vector2( 647, 354 )
 
 [node name="Tornado" parent="." instance=ExtResource( 2 )]
-position = Vector2( -722, 583 )
+position = Vector2( 350, 628 )
