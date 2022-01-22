@@ -17,7 +17,7 @@ const GRAVITY = 3000
 const WALK_SPEED = 300
 const WALK_ATTACK = WALK_SPEED/3
 const JUMP_HIGH = GRAVITY/5
-var state=MOVE
+var state=0
 var velocity = Vector2.ZERO
 const UP = Vector2(0,-1)
 const RIGHT=Vector2(1,0)
@@ -29,34 +29,43 @@ func _ready():
 func _physics_process(delta):
 	velocity.y += delta * GRAVITY
 	velocity.x =WALK_SPEED
-	sound_effect(state)
 	if state==DEATH:
 		velocity.x=0
+<<<<<<< HEAD
 		death_character(delta)
+=======
+		death_character()
+	elif Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y=-JUMP_HIGH
+		state=JUMP
+>>>>>>> 336357bbf4847e45ec27629bbd6ba9edbacc6403
 	elif !is_on_floor() :
-		jump_character(delta)
-		state==JUMP
+		jump_character()
+		state=JUMP
 	elif state==ATTACK or (Input.is_action_just_pressed("attack") and is_on_floor()) :
-		_attack(delta)
+		_attack()
 		state=ATTACK
 	elif is_on_wall() :
 		state=IDLE
-		idle_character(delta)
+		idle_character()
 	else:
 		state=MOVE
-		move_character(delta)
+		move_character()
 	velocity=move_and_slide(velocity,UP)
+	sound_effect(state)
 	
-func sound_effect(state):
-	if state==MOVE :
+func sound_effect(state1):
+	if state1==MOVE :
 		_audio_.play("run_music")
-	elif state==JUMP :
+	elif state1==JUMP :
 		_audio_.play("jump_sound")
-	elif state==IDLE :
+	elif state1==IDLE :
 		_audio_.play("idle_sound")
+	elif state1==DEATH :
+		_audio_.play("death_sound")
 
 
-func move_character(delta):
+func move_character():
 	_animated_sprite_run.show()
 	_animated_sprite_run.play()
 	_animated_sprite_jump.hide()
@@ -64,7 +73,7 @@ func move_character(delta):
 	_animated_sprite_attack.hide()
 	_animated_sprite_idle.hide()
 
-func idle_character(delta):
+func idle_character():
 	_animated_sprite_run.hide()
 	_animated_sprite_jump.hide()
 	_animated_sprite_death.hide()
@@ -73,7 +82,7 @@ func idle_character(delta):
 	_animated_sprite_idle.play()
 	
 
-func jump_character(delta):
+func jump_character():
 	_animated_sprite_run.hide()
 	_animated_sprite_jump.show()
 	_animated_sprite_jump.play()
@@ -81,10 +90,10 @@ func jump_character(delta):
 	_animated_sprite_attack.hide()
 	_animated_sprite_idle.hide()
 
-func _death_area_entered(area):
+func _death_area_entered(_area):
 	state=DEATH
 
-func death_character(delta):
+func death_character():
 	_animated_sprite_run.hide()
 	_animated_sprite_jump.hide()
 	_animated_sprite_idle.hide()
@@ -94,7 +103,7 @@ func death_character(delta):
 	if _animated_sprite_death.frame==10: 
 		queue_free()
 
-func _attack(delta):
+func _attack():
 	_audio_.play("attack_sound")
 	velocity.x =WALK_ATTACK
 	_animated_sprite_run.hide()
@@ -115,5 +124,5 @@ func place_object(node):
 func _on_Timer_timeout():
 	state=MOVE
 
-func _attack_area_entered(area):
+func _attack_area_entered(_area):
 	pass # Replace with function body.
