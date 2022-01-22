@@ -33,9 +33,6 @@ func _physics_process(delta):
 	if state==DEATH:
 		velocity.x=0
 		death_character(delta)
-	elif Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y=-JUMP_HIGH
-		state=JUMP
 	elif !is_on_floor() :
 		jump_character(delta)
 		state==JUMP
@@ -114,7 +111,6 @@ func _attack(delta):
 
 func place_object(node):
 	node.global_position = get_global_mouse_position()
-	print(1)
 
 func _on_Timer_timeout():
 	state=MOVE
