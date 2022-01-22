@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/SWSH_Whoosh 3 (ID 1795)_LS.mp3-7e6938a6d3c9468a87c5b28672e3b5c3.mp3str"
+
+[deps]
+
+source_file="res://soundeffect/SWSH_Whoosh 3 (ID 1795)_LS.mp3"
+dest_files=[ "res://.import/SWSH_Whoosh 3 (ID 1795)_LS.mp3-7e6938a6d3c9468a87c5b28672e3b5c3.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,83 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://soundeffect/Chase - Lance Conrad.mp3" type="AudioStream" id=1]
+[ext_resource path="res://texture/mossy/Parallax Forest Background - Blue/05_Particles.png" type="Texture" id=2]
+[ext_resource path="res://texture/mossy/Parallax Forest Background - Blue/09_Forest.png" type="Texture" id=3]
+[ext_resource path="res://texture/mossy/Parallax Forest Background - Blue/10_Sky.png" type="Texture" id=4]
+[ext_resource path="res://texture/mossy/Parallax Forest Background - Blue/07_Forest.png" type="Texture" id=6]
+[ext_resource path="res://texture/mossy/Parallax Forest Background - Blue/06_Forest.png" type="Texture" id=7]
+[ext_resource path="res://texture/mossy/Parallax Forest Background - Blue/08_Forest.png" type="Texture" id=8]
+[ext_resource path="res://texture/mossy/Parallax Forest Background - Blue/04_Forest.png" type="Texture" id=9]
+[ext_resource path="res://texture/mossy/Parallax Forest Background - Blue/03_Particles.png" type="Texture" id=10]
+
+[node name="MossyBackground2" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer01" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.1, 1 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer01"]
+texture = ExtResource( 4 )
+centered = false
+
+[node name="ParallaxLayer02" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.2, 1 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer02"]
+texture = ExtResource( 3 )
+centered = false
+
+[node name="ParallaxLayer03" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.4, 1 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer03"]
+texture = ExtResource( 8 )
+centered = false
+
+[node name="ParallaxLayer04" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.6, 1 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer04"]
+texture = ExtResource( 6 )
+centered = false
+
+[node name="ParallaxLayer05" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.7, 1 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer05"]
+texture = ExtResource( 7 )
+centered = false
+
+[node name="ParallaxLayer06" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.8, 1 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer06"]
+texture = ExtResource( 2 )
+centered = false
+
+[node name="ParallaxLayer07" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.8, 1 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer07"]
+texture = ExtResource( 9 )
+centered = false
+
+[node name="ParallaxLayer08" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.8, 1 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer08"]
+texture = ExtResource( 10 )
+centered = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+autoplay = true
