@@ -26,7 +26,7 @@ func _ready():
 
 func _physics_process(delta):
 	velocity.y += delta * GRAVITY
-	velocity.x =WALK_SPEED
+	velocity.x = WALK_SPEED
 	if state==DEATH:
 		velocity.x=0
 		death_character(delta)

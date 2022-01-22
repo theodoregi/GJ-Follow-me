@@ -32,7 +32,7 @@ func _on_Object1_input_event(_viewport, event, _shape_idx):
 			$CollisionShape2D.disabled = true
 			have_object = true
 			get_child(1).modulate = Color(1,1,1,0.5)
-			get_child(1).scale *= 0.5
+			get_child(1).scale *= 0.25
 
 
 
@@ -41,7 +41,7 @@ func _on_Object2_input_event(_viewport, event, _shape_idx):
 		if event.is_pressed():
 			have_object = true
 			$CollisionShape2D.disabled = true
-			get_child(1).scale *= 0.5
+			get_child(1).scale *= 0.25
 			get_child(1).modulate = Color(1,1,1,0.5)
 
 
@@ -50,7 +50,7 @@ func _on_Object3_input_event(_viewport, event, _shape_idx):
 		if event.is_pressed():
 			have_object = true
 			$CollisionShape2D.disabled = true
-			get_child(1).scale *= 0.5
+			get_child(1).scale *= 0.25
 			get_child(1).modulate = Color(1,1,1,0.5)
 
 func _on_Space_input_event(viewport, event, shape_idx):

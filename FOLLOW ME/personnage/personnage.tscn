@@ -309,7 +309,11 @@ position = Vector2( 18.5, -11 )
 shape = SubResource( 38 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 100, 0 )
 current = true
+zoom = Vector2( 0.5, 0.5 )
+limit_top = 0
+limit_bottom = 1080
 
 [connection signal="tree_entered" from="Collision/RayCast2D" to="." method="_on_RayCast2D_tree_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
