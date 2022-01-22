@@ -3,6 +3,9 @@ signal place_node(value)
 var is_object = false
 	
 var have_object = false
+func _ready():
+	var perso = get_parent().get_parent().get_node("personnage")
+	self.connect("place_node",perso, "place_object")
 func _physics_process(delta):
 	print(get_global_mouse_position())
 	if (have_object):
@@ -58,4 +61,6 @@ func _on_Space_input_event(viewport, event, shape_idx):
 			node.modulate = Color(1,1,1,1)
 			node.get_parent().remove_child(node)
 			get_parent().get_parent().add_child(node)
+			emit_signal("place_node", node)
+
 			
