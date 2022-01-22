@@ -9,7 +9,7 @@ onready var _animated_sprite_attack = $Attack
 onready var _animated_sprite_idle = $Idle
 onready var _timer = $Timer
 
-enum {MOVE, ATTACK,DEATH}
+enum {MOVE, ATTACK,DEATH, RECOVERY}
 
 const GRAVITY = 3000
 const WALK_SPEED = 300
