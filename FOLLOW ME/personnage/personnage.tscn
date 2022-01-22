@@ -75,7 +75,7 @@ animations = [ {
 "frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
 "loop": true,
 "name": "default",
-"speed": 7.0
+"speed": 14.0
 } ]
 
 [sub_resource type="AtlasTexture" id=29]
@@ -181,7 +181,7 @@ animations = [ {
 "frames": [ SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ) ],
 "loop": false,
 "name": "default",
-"speed": 6.0
+"speed": 10.0
 } ]
 
 [sub_resource type="AtlasTexture" id=39]
@@ -282,16 +282,12 @@ frames = SubResource( 50 )
 position = Vector2( 3.5, -3 )
 shape = SubResource( 15 )
 
-[node name="RayCast2D" type="RayCast2D" parent="Collision"]
-cast_to = Vector2( 50, 0 )
-collision_mask = 2
-
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
 [node name="death" type="Area2D" parent="."]
-collision_layer = 32
-collision_mask = 4
+collision_layer = 16
+collision_mask = 0
 
 [node name="death_shape" type="CollisionShape2D" parent="death"]
 modulate = Color( 0.282353, 0.054902, 0.901961, 1 )
@@ -299,15 +295,14 @@ position = Vector2( 3.5, -3.5 )
 shape = SubResource( 37 )
 
 [node name="attack" type="Area2D" parent="."]
-collision_layer = 8
-collision_mask = 0
+collision_layer = 0
+collision_mask = 8
 
 [node name="attack_shape" type="CollisionShape2D" parent="attack"]
 modulate = Color( 0, 1, 0, 1 )
-light_mask = 8
+light_mask = 0
 position = Vector2( 18.5, -11 )
 shape = SubResource( 38 )
 
-[connection signal="tree_entered" from="Collision/RayCast2D" to="." method="_on_RayCast2D_tree_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="area_entered" from="death" to="." method="_death_area_entered"]

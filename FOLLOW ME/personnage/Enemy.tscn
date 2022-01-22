@@ -44,7 +44,7 @@ animations = [ {
 extents = Vector2( 11.625, 10.875 )
 
 [sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 7.75, 18.75 )
+extents = Vector2( 16.875, 19.375 )
 
 [sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 19.5625, 19.125 )
@@ -70,20 +70,24 @@ frames = SubResource( 9 )
 position = Vector2( 8, 3 )
 shape = SubResource( 4 )
 
-[node name="attack_enemy2" type="Area2D" parent="."]
+[node name="attack_enemy" type="Area2D" parent="."]
 position = Vector2( 80, -33 )
 collision_layer = 0
-collision_mask = 0
+collision_mask = 16
 
-[node name="attack_shape_enemy" type="CollisionShape2D" parent="attack_enemy2"]
+[node name="attack_shape_enemy" type="CollisionShape2D" parent="attack_enemy"]
 modulate = Color( 0, 1, 0, 1 )
-position = Vector2( -96, 27 )
+light_mask = 0
+position = Vector2( -105.125, 26.375 )
 shape = SubResource( 10 )
 
-[node name="death_enemy2" type="Area2D" parent="."]
-collision_layer = 0
+[node name="death_enemy" type="Area2D" parent="."]
+collision_layer = 8
 collision_mask = 0
 
-[node name="death_shape_enemy" type="CollisionShape2D" parent="death_enemy2"]
+[node name="death_shape_enemy" type="CollisionShape2D" parent="death_enemy"]
 position = Vector2( 12.4375, -5.875 )
 shape = SubResource( 11 )
+
+[connection signal="area_entered" from="attack_enemy" to="." method="_attack_enemy_area_entered"]
+[connection signal="area_entered" from="death_enemy" to="." method="_death_enemy_area_entered"]
