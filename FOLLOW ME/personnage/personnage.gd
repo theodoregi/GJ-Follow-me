@@ -33,12 +33,18 @@ func _physics_process(delta):
 		velocity.x=0
 <<<<<<< HEAD
 		death_character(delta)
+<<<<<<< HEAD
 =======
 		death_character()
 	elif Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y=-JUMP_HIGH
 		state=JUMP
 >>>>>>> 336357bbf4847e45ec27629bbd6ba9edbacc6403
+=======
+	elif Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y=-JUMP_HIGH
+		state=JUMP
+>>>>>>> parent of 3b53e38 (merge)
 	elif !is_on_floor() :
 		jump_character()
 		state=JUMP
@@ -120,6 +126,7 @@ func _attack():
 
 func place_object(node):
 	node.global_position = get_global_mouse_position()
+	print(1)
 
 func _on_Timer_timeout():
 	state=MOVE
