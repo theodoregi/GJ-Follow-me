@@ -85,6 +85,10 @@ func _attack(delta):
 		_animated_sprite_attack.frame = 0
 		_timer.start(0.5)
 
+func place_object(node):
+	node.global_position = get_global_mouse_position()
+	print(1)
+
 func _on_Timer_timeout():
 	state=MOVE
 
