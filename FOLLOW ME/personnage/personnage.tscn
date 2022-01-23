@@ -451,7 +451,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=15]
-extents = Vector2( 16.5, 26 )
+extents = Vector2( 17, 26 )
 
 [sub_resource type="RectangleShape2D" id=37]
 extents = Vector2( 11.5, 22.5 )
@@ -498,7 +498,7 @@ frame = 4
 frames = SubResource( 50 )
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2( 3.5, -3 )
+position = Vector2( 4, -3 )
 shape = SubResource( 15 )
 
 [node name="Timer" type="Timer" parent="."]
