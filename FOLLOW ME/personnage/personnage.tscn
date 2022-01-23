@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=2]
+[gd_scene load_steps=66 format=2]
 
 [ext_resource path="res://personnage/personnage.gd" type="Script" id=1]
 [ext_resource path="res://texture/perso_sprites/Jump.png" type="Texture" id=2]
@@ -11,7 +11,6 @@
 [ext_resource path="res://soundeffect/Respiration homme essouffle (ID 1103)_LS.mp3" type="AudioStream" id=9]
 [ext_resource path="res://soundeffect/Enregistrement.mp3" type="AudioStream" id=10]
 [ext_resource path="res://soundeffect/mort.mp3" type="AudioStream" id=11]
-[ext_resource path="res://soundeffect/SWSH_Whoosh 2 (ID 0573)_LS.mp3" type="AudioStream" id=12]
 
 [sub_resource type="Animation" id=54]
 length = 0.001
@@ -30,7 +29,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=51]
 resource_name = "attack_sound"
-length = 0.5
 tracks/0/type = "audio"
 tracks/0/path = NodePath("../Attack/Attackaudio")
 tracks/0/interp = 1
@@ -40,7 +38,7 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "clips": [ {
 "end_offset": 0.0,
-"start_offset": 0.2,
+"start_offset": 0.0,
 "stream": ExtResource( 8 )
 } ],
 "times": PoolRealArray( 0 )
@@ -414,7 +412,7 @@ extents = Vector2( 16.5, 26 )
 extents = Vector2( 11.5, 22.5 )
 
 [sub_resource type="RectangleShape2D" id=38]
-extents = Vector2( 25.5, 31.75 )
+extents = Vector2( 9.75, 31.75 )
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
 position = Vector2( 601, 325 )
@@ -442,7 +440,7 @@ frames = SubResource( 36 )
 frame = 3
 
 [node name="Attackaudio" type="AudioStreamPlayer2D" parent="Attack"]
-stream = ExtResource( 12 )
+stream = ExtResource( 8 )
 area_mask = 0
 
 [node name="Death" type="AnimatedSprite" parent="."]
@@ -474,7 +472,17 @@ collision_mask = 128
 [node name="attack_shape" type="CollisionShape2D" parent="attack"]
 modulate = Color( 0, 1, 0, 1 )
 light_mask = 8
-position = Vector2( 47, -9.25 )
+position = Vector2( 31, -9 )
+shape = SubResource( 38 )
+
+[node name="attack2" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 128
+
+[node name="attack_shape2" type="CollisionShape2D" parent="attack2"]
+modulate = Color( 0, 1, 0, 1 )
+light_mask = 8
+position = Vector2( 53, -9 )
 shape = SubResource( 38 )
 
 [node name="Camera2D" type="Camera2D" parent="."]

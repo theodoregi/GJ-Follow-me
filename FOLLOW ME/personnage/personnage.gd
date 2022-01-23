@@ -49,7 +49,7 @@ func _physics_process(delta):
 		state=MOVE
 		move_character()
 	velocity=move_and_slide(velocity,UP)
-	print(state==ATTACK)
+	#print(state==ATTACK)
 	sound_effect(state)
 	
 func sound_effect(state1):
@@ -121,16 +121,17 @@ func check_attack_area():
 	if state==ATTACK:
 		$attack.set_monitoring(true)
 		$attack.set_monitorable(true)
+		$attack2.set_monitoring(true)
+		$attack2.set_monitorable(true)
 	else:
 		$attack.set_monitoring(false)
 		$attack.set_monitorable(false)
+		$attack2.set_monitoring(false)
+		$attack2.set_monitorable(false)
 
 func place_object(node):
 	node.global_position = get_global_mouse_position()
-	print(1)
 
 func _on_Timer_timeout():
 	state=MOVE
 
-func _attack_area_entered(_area):
-	pass # Replace with function body.
