@@ -31,9 +31,9 @@ func _physics_process(delta):
 	velocity.x =WALK_SPEED
 	cloud_protection()
 	check_attack_area()
-	if (!have_falling) and state!=DEATH:
+	if (!have_falling) :
 		sound_effect(state)
-	if state==DEATH: 
+	if state==DEATH:
 		velocity.x=0
 		death_character()
 	elif Input.is_action_just_pressed("jump") and is_on_floor() and state!=DEATH:
@@ -53,6 +53,7 @@ func _physics_process(delta):
 	else:
 		state=MOVE
 		move_character()
+	print(state==DEATH)
 	velocity=move_and_slide(velocity,UP)
 	
 func sound_effect(state1):

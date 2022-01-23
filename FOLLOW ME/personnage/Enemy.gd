@@ -26,7 +26,7 @@ func _physics_process(delta):
 		idle_enemy()
 	elif state==ATTACK:
 		attack_enemy()
-	print(state)
+	#print(state)
 	check_area()
 	velocity=move_and_slide(velocity,UP)
 
