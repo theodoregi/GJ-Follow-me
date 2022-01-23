@@ -7,7 +7,6 @@ func _ready():
 	var perso = get_parent().get_parent().get_node("personnage")
 	self.connect("place_node",perso, "place_object")
 func _physics_process(delta):
-	print(get_global_mouse_position())
 	if (have_object):
 		get_child(1).global_position = get_viewport().get_mouse_position()
 func creation_object(list):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=64 format=2]
 
 [ext_resource path="res://personnage/personnage.gd" type="Script" id=1]
 [ext_resource path="res://texture/perso_sprites/Jump.png" type="Texture" id=2]
@@ -10,7 +10,6 @@
 [ext_resource path="res://soundeffect/SWSH_Whoosh 3 (ID 1795)_LS.mp3" type="AudioStream" id=8]
 [ext_resource path="res://soundeffect/Respiration homme essouffle (ID 1103)_LS.mp3" type="AudioStream" id=9]
 [ext_resource path="res://soundeffect/Enregistrement.mp3" type="AudioStream" id=10]
-[ext_resource path="res://soundeffect/mort.mp3" type="AudioStream" id=11]
 
 [sub_resource type="Animation" id=54]
 length = 0.001
@@ -55,24 +54,6 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0.0 ]
-}
-
-[sub_resource type="Animation" id=56]
-resource_name = "death_sound"
-length = 2.0
-tracks/0/type = "audio"
-tracks/0/path = NodePath("../Attack/Attackaudio")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"clips": [ {
-"end_offset": 0.0,
-"start_offset": 0.29,
-"stream": ExtResource( 11 )
-} ],
-"times": PoolRealArray( 0 )
 }
 
 [sub_resource type="Animation" id=53]
@@ -407,13 +388,13 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=15]
-extents = Vector2( 16.5, 26 )
+extents = Vector2( 20.5, 26 )
 
 [sub_resource type="RectangleShape2D" id=37]
 extents = Vector2( 11.5, 22.5 )
 
 [sub_resource type="RectangleShape2D" id=38]
-extents = Vector2( 25.5, 31.75 )
+extents = Vector2( 34.5, 30 )
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
 position = Vector2( 601, 325 )
@@ -424,7 +405,6 @@ script = ExtResource( 1 )
 root_node = NodePath("../Jump")
 anims/RESET = SubResource( 54 )
 anims/attack_sound = SubResource( 51 )
-anims/death_sound = SubResource( 56 )
 anims/idle_sound = SubResource( 53 )
 anims/jump_sound = SubResource( 55 )
 anims/run_music = SubResource( 52 )
@@ -441,7 +421,7 @@ frames = SubResource( 36 )
 frame = 3
 
 [node name="Attackaudio" type="AudioStreamPlayer2D" parent="Attack"]
-stream = ExtResource( 11 )
+stream = ExtResource( 10 )
 area_mask = 0
 
 [node name="Death" type="AnimatedSprite" parent="."]
@@ -451,7 +431,7 @@ frames = SubResource( 28 )
 frames = SubResource( 50 )
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2( 3.5, -3 )
+position = Vector2( 8.5, -3 )
 shape = SubResource( 15 )
 
 [node name="RayCast2D" type="RayCast2D" parent="Collision"]
@@ -463,21 +443,21 @@ one_shot = true
 
 [node name="death" type="Area2D" parent="."]
 collision_layer = 32
-collision_mask = 0
+collision_mask = 4
 
 [node name="death_shape" type="CollisionShape2D" parent="death"]
 modulate = Color( 0.282353, 0.054902, 0.901961, 1 )
-position = Vector2( 3, -1 )
+position = Vector2( 3.5, -3.5 )
 shape = SubResource( 37 )
 
 [node name="attack" type="Area2D" parent="."]
-collision_layer = 64
-collision_mask = 128
+collision_layer = 8
+collision_mask = 0
 
 [node name="attack_shape" type="CollisionShape2D" parent="attack"]
 modulate = Color( 0, 1, 0, 1 )
 light_mask = 8
-position = Vector2( 47, -9.25 )
+position = Vector2( 18.5, -11 )
 shape = SubResource( 38 )
 
 [node name="Camera2D" type="Camera2D" parent="."]

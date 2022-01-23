@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scene/Camera2D.gd" type="Script" id=1]
+[ext_resource path="res://texture/background/far-buildings.png" type="Texture" id=2]
+[ext_resource path="res://texture/background/skill-foreground.png" type="Texture" id=3]
+[ext_resource path="res://texture/background/buildings.png" type="Texture" id=4]
+[ext_resource path="res://texture/background/bg.png" type="Texture" id=5]
+
+[node name="Background" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayerFarthest" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.4, 1 )
+motion_mirroring = Vector2( 1088, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayerFarthest"]
+scale = Vector2( 4, 4 )
+texture = ExtResource( 5 )
+centered = false
+
+[node name="ParallaxLayerFar" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.6, 1 )
+motion_mirroring = Vector2( 1065, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayerFar"]
+scale = Vector2( 5, 5 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="ParallaxLayerClose" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.8, 1 )
+motion_mirroring = Vector2( 1088, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayerClose"]
+scale = Vector2( 4, 4 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="ParallaxLayerClosest" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 1632, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayerClosest"]
+scale = Vector2( 6, 6 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 0, 300 )
+current = true
+script = ExtResource( 1 )

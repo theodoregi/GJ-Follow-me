@@ -8,25 +8,16 @@ onready var _animated_sprite_attack = $Attack_enemy
 const GRAVITY = 3000.0
 var velocity = Vector2.ZERO
 const UP = Vector2(0, -1)
-enum {MOVE, ATTACK,DEATH,KILL}
+enum {MOVE, ATTACK,DEATH}
 
 var state=MOVE
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
-
-func _physics_process(delta):
-	velocity.y += delta * GRAVITY
-	if state==DEATH:
-		death_enemy()
-	elif state==MOVE:
+	if state==MOVE:
 		idle_enemy()
 	elif state==ATTACK:
-		attack_enemy()
-	elif state==KILL:
-		enemy_kill()
-	velocity=move_and_slide(velocity,UP)
+		death_enemy()
 
 func idle_enemy():
 	_animated_sprite_idle.show()
@@ -39,27 +30,23 @@ func death_enemy():
 	_animated_sprite_death.show()
 	_animated_sprite_death.play()
 	_animated_sprite_attack.hide()
-	if _animated_sprite_death.frame==5: 
+	if _animated_sprite_death.frame==10: 
 		queue_free()
 
-func attack_enemy():
-	_animated_sprite_idle.hide()
-	_animated_sprite_death.hide()
-	_animated_sprite_attack.show()
-	_animated_sprite_attack.play()
-	if _animated_sprite_attack.frame==4:
-		state=KILL
 
-func enemy_kill():
-	_animated_sprite_attack.frame=0
-	_animated_sprite_attack.stop()
+func _physics_process(delta):
+	velocity.y += delta * GRAVITY
+	velocity=move_and_slide(velocity,UP)
 	
-func _death_enemy_area_entered(_area):
-	state=DEATH
-	
-func _attack_enemy_area_entered(_area):
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+
+func _attack_enemy_area_entered(area):
 	state=ATTACK
 
 
-
-	#pass
+func _death_enemy_area_entered(area):
+	state=DEATH
