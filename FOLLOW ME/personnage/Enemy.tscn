@@ -101,7 +101,7 @@ animations = [ {
 extents = Vector2( 12.3125, 11.4375 )
 
 [sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 1.75, 19.375 )
+extents = Vector2( 5.875, 18.1875 )
 
 [sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 13, 13.5625 )
@@ -146,7 +146,7 @@ collision_mask = 16
 [node name="attack_shape_enemy" type="CollisionShape2D" parent="attack_enemy"]
 modulate = Color( 0, 1, 0, 1 )
 light_mask = 0
-position = Vector2( -7, 6 )
+position = Vector2( -11.125, 4.8125 )
 shape = SubResource( 10 )
 
 [node name="death_enemy" type="Area2D" parent="."]

@@ -149,15 +149,9 @@ func cloud_protection():
 
 func check_attack_area():
 	if state==ATTACK:
-		$attack.set_monitoring(true)
-		$attack.set_monitorable(true)
-		$attack2.set_monitoring(true)
-		$attack2.set_monitorable(true)
+		$attack/attack_shape.disabled=false
 	else:
-		$attack.set_monitoring(false)
-		$attack.set_monitorable(false)
-		$attack2.set_monitoring(false)
-		$attack2.set_monitorable(false)
+		$attack/attack_shape.disabled=true
 
 func place_object(node):
 	node.global_position = get_global_mouse_position()

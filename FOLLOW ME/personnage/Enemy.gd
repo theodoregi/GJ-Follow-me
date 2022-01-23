@@ -68,12 +68,8 @@ func _attack_enemy_area_entered(_area):
 
 func check_area():
 	if state==DEATH:
-		$attack_enemy.set_monitoring(false)
-		$attack_enemy.set_monitorable(false)
-		$death_enemy.set_monitoring(false)
-		$death_enemy.set_monitorable(false)
+		$attack_enemy/attack_shape_enemy.disabled=true
+		$death_enemy/death_shape_enemy.disabled=true
 	else :
-		$attack_enemy.set_monitoring(true)
-		$attack_enemy.set_monitorable(true)
-		$death_enemy.set_monitoring(true)
-		$death_enemy.set_monitorable(true)
+		$attack_enemy/attack_shape_enemy.disabled=false
+		$death_enemy/death_shape_enemy.disabled=false

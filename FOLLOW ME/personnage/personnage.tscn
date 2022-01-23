@@ -451,13 +451,13 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=15]
-extents = Vector2( 17, 26 )
+extents = Vector2( 15.5, 26 )
 
 [sub_resource type="RectangleShape2D" id=37]
 extents = Vector2( 11.5, 22.5 )
 
 [sub_resource type="RectangleShape2D" id=38]
-extents = Vector2( 9.75, 31.75 )
+extents = Vector2( 25.875, 31.75 )
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
 position = Vector2( 601, 325 )
@@ -498,7 +498,7 @@ frame = 4
 frames = SubResource( 50 )
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2( 4, -3 )
+position = Vector2( 2.5, -3 )
 shape = SubResource( 15 )
 
 [node name="Timer" type="Timer" parent="."]
@@ -520,17 +520,7 @@ collision_mask = 128
 [node name="attack_shape" type="CollisionShape2D" parent="attack"]
 modulate = Color( 0, 1, 0, 1 )
 light_mask = 8
-position = Vector2( 31, -9 )
-shape = SubResource( 38 )
-
-[node name="attack2" type="Area2D" parent="."]
-collision_layer = 64
-collision_mask = 128
-
-[node name="attack_shape2" type="CollisionShape2D" parent="attack2"]
-modulate = Color( 0, 1, 0, 1 )
-light_mask = 8
-position = Vector2( 53, -9 )
+position = Vector2( 45.125, -9 )
 shape = SubResource( 38 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
