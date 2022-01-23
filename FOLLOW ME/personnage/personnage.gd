@@ -29,7 +29,6 @@ func _ready():
 func _physics_process(delta):
 	velocity.y += delta * GRAVITY
 	velocity.x =WALK_SPEED
-	check_attack_area()
 	cloud_protection()
 	check_attack_area()
 	if (!have_falling):
@@ -87,7 +86,6 @@ func idle_character():
 
 
 func jump_character():
-
 	if ($Timer.time_left == 0):
 		$Timer.start(0.7)
 		_audio_.stop()
