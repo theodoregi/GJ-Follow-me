@@ -14,8 +14,8 @@ onready var _audio_ = $AnimationPlayer
 enum {MOVE,ATTACK,DEATH,IDLE,JUMP}
 
 const GRAVITY = 3000
-const WALK_SPEED = 300
-const WALK_ATTACK = WALK_SPEED/3
+var WALK_SPEED = 300
+var WALK_ATTACK = WALK_SPEED/3
 const JUMP_HIGH = GRAVITY/5
 var state=MOVE
 var velocity = Vector2.ZERO
@@ -29,47 +29,56 @@ func _ready():
 func _physics_process(delta):
 	velocity.y += delta * GRAVITY
 	velocity.x =WALK_SPEED
-	cloud_protection()
-	if (! have_falling):
-		sound_effect(state)
+	check_attack_area()
+	#cloud_protection()
+	#check_attack_area()
+	#if (!have_falling):
+		#sound_effect(state)
 	if state==DEATH:
 		velocity.x=0
-		death_character(delta)
+		death_character()
+	elif Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y=-JUMP_HIGH
+		state=JUMP
 	elif !is_on_floor() :
-		jump_character(delta)
-		state==JUMP
-	elif have_falling:
-		recovery_character()
+		jump_character()
+		state=JUMP
+	#elif have_falling:
+		#recovery_character()
 	elif state==ATTACK or (Input.is_action_just_pressed("attack") and is_on_floor()) :
-		_attack(delta)
+		_attack()
 		state=ATTACK
 	elif is_on_wall() :
 		state=IDLE
-		idle_character(delta)
+		idle_character()
 	else:
 		state=MOVE
-		move_character(delta)
+		move_character()
 	velocity=move_and_slide(velocity,UP)
+	#print(state==ATTACK)
+	sound_effect(state)
 	
-func sound_effect(state):
-	if state==MOVE :
+func sound_effect(state1):
+	if state1==MOVE :
 		_audio_.play("run_music")
-	elif state==JUMP :
+	elif state1==JUMP :
 		_audio_.play("jump_sound")
-	elif state==IDLE :
+	elif state1==IDLE :
 		_audio_.play("idle_sound")
+	elif state1==DEATH:
+		_audio_.play("death_sound")
 
 
-func move_character(delta):
+func move_character():
 	_animated_sprite_run.show()
 	_animated_sprite_run.play()
 	_animated_sprite_jump.hide()
 	_animated_sprite_death.hide()
 	_animated_sprite_attack.hide()
 	_animated_sprite_idle.hide()
-	$Timer.stop()
+	#$Timer.stop()
 
-func idle_character(delta):
+func idle_character():
 	_animated_sprite_run.hide()
 	_animated_sprite_jump.hide()
 	_animated_sprite_death.hide()
@@ -78,11 +87,12 @@ func idle_character(delta):
 	_animated_sprite_idle.play()
 	
 
-func jump_character(delta):
-	if ($Timer.time_left == 0):
-		$Timer.start(0.6)
-	if ($Timer.time_left < 0.1):
-		have_falling = true
+func jump_character():
+	#if ($Timer.time_left == 0):
+	#	$Timer.start(0.6)
+	#	_audio_.stop()
+	#if ($Timer.time_left < 0.1):
+	#	have_falling = true
 	_animated_sprite_run.hide()
 	_animated_sprite_jump.show()
 	_animated_sprite_jump.play()
@@ -92,11 +102,13 @@ func jump_character(delta):
 
 
 func _death_area_entered(area):
-	state=DEATH
-	if (area.name=="TornadoArea"):
-		_audio_.play("Fly")
+	if !state==ATTACK:
+		state=DEATH
+		if (area.name=="TornadoArea"):
+			_audio_.play("Fly")
 
-func death_character(delta):
+
+func death_character():
 	_animated_sprite_run.hide()
 	_animated_sprite_jump.hide()
 	_animated_sprite_idle.hide()
@@ -113,13 +125,13 @@ func recovery_character():
 	_animated_sprite_attack.hide()
 	_animated_sprite_idle.hide()
 	velocity = Vector2.ZERO
-	_audio_.play("revovery")
+	#_audio_.play("recovery")
 
 
 func end_recovery():
 	have_falling = false
 
-func _attack(delta):
+func _attack():
 	_audio_.play("attack_sound")
 	velocity.x =WALK_ATTACK
 	_animated_sprite_run.hide()
@@ -136,14 +148,25 @@ func _attack(delta):
 func cloud_protection():
 	for i in get_slide_count():
 		var collision = get_slide_collision(i)
-		if collision.collider.name == "Cloud":
+		if collision.collider && collision.collider.name == "Cloud":
 			have_falling=false
-			
+
+
+func check_attack_area():
+	if state==ATTACK:
+		$attack.set_monitoring(true)
+		$attack.set_monitorable(true)
+		$attack2.set_monitoring(true)
+		$attack2.set_monitorable(true)
+	else:
+		$attack.set_monitoring(false)
+		$attack.set_monitorable(false)
+		$attack2.set_monitoring(false)
+		$attack2.set_monitorable(false)
+
 func place_object(node):
 	node.global_position = get_global_mouse_position()
 
 func _on_Timer_timeout():
 	state=MOVE
 
-func _attack_area_entered(area):
-	pass # Replace with function body.
