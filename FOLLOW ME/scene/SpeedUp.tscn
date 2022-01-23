@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://texture/Tools/searing_ray_0.png" type="Texture" id=1]
 [ext_resource path="res://texture/Tools/searing_ray_3.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://texture/Tools/searing_ray_1.png" type="Texture" id=4]
 [ext_resource path="res://texture/Tools/searing_ray_2.png" type="Texture" id=5]
 [ext_resource path="res://texture/Tools/searing_ray_5.png" type="Texture" id=6]
+[ext_resource path="res://scene/SpeedUp.gd" type="Script" id=7]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -19,13 +20,17 @@ animations = [ {
 
 [node name="SpeedUp" type="Node2D"]
 scale = Vector2( 4, 4 )
+script = ExtResource( 7 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-frame = 4
 playing = true
 
 [node name="SpeedUpZone" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpeedUpZone"]
 shape = SubResource( 2 )
+
+[connection signal="body_entered" from="SpeedUpZone" to="." method="_on_SpeedUpZone_body_entered"]
