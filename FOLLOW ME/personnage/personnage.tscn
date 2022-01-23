@@ -132,7 +132,6 @@ tracks/1/keys = {
 [sub_resource type="Animation" id=56]
 resource_name = "revovery"
 length = 0.7
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("../Death:frame")
 tracks/0/interp = 1

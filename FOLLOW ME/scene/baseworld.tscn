@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=2]
+[gd_scene load_steps=65 format=2]
 
 [ext_resource path="res://scene/UI.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scene/Tornado.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://personnage/personnage.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scene/MossyBackground2BIS.tscn" type="PackedScene" id=9]
 [ext_resource path="res://texture/mossy/mossy_tile_set2.png" type="Texture" id=10]
+[ext_resource path="res://scene/PileofEarth.tscn" type="PackedScene" id=11]
 
 [sub_resource type="ConvexPolygonShape2D" id=77]
 points = PoolVector2Array( 0, 0, 0, 0, 0, 0, 512, 0, 512, 512, 0, 512 )
@@ -522,8 +523,7 @@ font_data = SubResource( 74 )
 [node name="Level 0" type="Node2D"]
 
 [node name="UI" parent="." instance=ExtResource( 1 )]
-nb_cloud = 2
-nb_dig = 0
+nb_dig = 3
 
 [node name="TileMapMossy" type="TileMap" parent="."]
 scale = Vector2( 0.063, 0.063 )
@@ -579,3 +579,6 @@ __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
 }
+
+[node name="PileofEarth" parent="." instance=ExtResource( 11 )]
+position = Vector2( 3808, 857 )

@@ -14,8 +14,8 @@ onready var _audio_ = $AnimationPlayer
 enum {MOVE,ATTACK,DEATH,IDLE,JUMP}
 
 const GRAVITY = 3000
-const WALK_SPEED = 300
-const WALK_ATTACK = WALK_SPEED/3
+var WALK_SPEED = 300
+var WALK_ATTACK = WALK_SPEED/3
 const JUMP_HIGH = GRAVITY/5
 var state=MOVE
 var velocity = Vector2.ZERO
@@ -135,7 +135,7 @@ func _attack(delta):
 func cloud_protection():
 	for i in get_slide_count():
 		var collision = get_slide_collision(i)
-		if collision.collider.name == "Cloud":
+		if collision && collision.collider.name == "Cloud":
 			have_falling=false
 			
 func place_object(node):
