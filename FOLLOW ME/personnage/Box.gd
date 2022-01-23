@@ -37,3 +37,5 @@ func check_area():
 		$CollisionShape2D.set_deferred("disabled", false)
 
 
+func _death_box_area_exited(area):
+	state=DEATH

@@ -68,42 +68,6 @@ tracks/3/keys = {
 "method": "queue_free"
 } ]
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath("../death/death_shape:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = false
-tracks/4/keys = {
-"times": PoolRealArray( 0.1 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("../attack/attack_shape:disabled")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = false
-tracks/5/keys = {
-"times": PoolRealArray( 0.1 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("../attack2/attack_shape2:disabled")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = false
-tracks/6/keys = {
-"times": PoolRealArray( 0.1 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
 
 [sub_resource type="Animation" id=51]
 resource_name = "attack_sound"
@@ -132,6 +96,24 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=56]
+resource_name = "death_sound"
+length = 2.0
+tracks/0/type = "audio"
+tracks/0/path = NodePath("../Attack/Attackaudio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.29,
+"stream": ExtResource( 12 )
+} ],
+"times": PoolRealArray( 0 )
 }
 
 [sub_resource type="Animation" id=53]
@@ -516,7 +498,7 @@ offset = Vector2( 7.526, 0 )
 frames = SubResource( 50 )
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2( 8.5, -3 )
+position = Vector2( 2.5, -3 )
 shape = SubResource( 15 )
 disabled = true
 
@@ -539,17 +521,7 @@ collision_mask = 0
 [node name="attack_shape" type="CollisionShape2D" parent="attack"]
 modulate = Color( 0, 1, 0, 1 )
 light_mask = 8
-position = Vector2( 18.5, -11 )
-shape = SubResource( 38 )
-
-[node name="attack2" type="Area2D" parent="."]
-collision_layer = 64
-collision_mask = 128
-
-[node name="attack_shape2" type="CollisionShape2D" parent="attack2"]
-modulate = Color( 0, 1, 0, 1 )
-light_mask = 8
-position = Vector2( 53, -9 )
+position = Vector2( 45.125, -9 )
 shape = SubResource( 38 )
 
 [node name="Camera2D" type="Camera2D" parent="."]

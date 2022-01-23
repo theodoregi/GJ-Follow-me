@@ -47,7 +47,6 @@ func _physics_process(delta):
 			velocity.x =WALK_SPEED
 			check_attack_area()
 			cloud_protection()
-			check_attack_area()
 			
 			if Input.is_action_just_pressed("jump") and is_on_floor():
 				velocity.y=-JUMP_HIGH
@@ -120,7 +119,6 @@ func _death_area_entered(area):
 			_audio_.play("Fly")
 
 func death_character():
-	print("frame=", _animated_sprite_death.frame)
 	_animated_sprite_run.hide()
 	_animated_sprite_jump.hide()
 	_animated_sprite_idle.hide()
@@ -166,15 +164,9 @@ func cloud_protection():
 
 func check_attack_area():
 	if state==ATTACK:
-		$attack.set_monitoring(true)
-		$attack.set_monitorable(true)
-		$attack2.set_monitoring(true)
-		$attack2.set_monitorable(true)
+		$attack/attack_shape.disabled=false
 	else:
-		$attack.set_monitoring(false)
-		$attack.set_monitorable(false)
-		$attack2.set_monitoring(false)
-		$attack2.set_monitorable(false)
+		$attack/attack_shape.disabled=true
 
 func place_object(node):
 	node.global_position = get_global_mouse_position()
