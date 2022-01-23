@@ -59,13 +59,8 @@ tracks/1/keys = {
 }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 61, 24 )
-=======
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 79.25, 12 )
->>>>>>> parent of 6a17345 (Merge)
 =======
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 79.25, 12 )
@@ -86,7 +81,6 @@ anims/RESET = SubResource( 2 )
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
 position = Vector2( -0.25, 7 )
 <<<<<<< HEAD
-<<<<<<< HEAD
 polygon = PoolVector2Array( -90.75, 6, 95.25, 3, 35.25, -27, -37.75, -27 )
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -98,9 +92,6 @@ position = Vector2( -19, -29 )
 shape = SubResource( 4 )
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
-=======
-shape = SubResource( 3 )
->>>>>>> parent of 6a17345 (Merge)
 =======
 shape = SubResource( 3 )
 >>>>>>> parent of 6a17345 (Merge)

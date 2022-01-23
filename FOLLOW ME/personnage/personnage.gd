@@ -11,12 +11,8 @@ onready var _timer = $Timer
 onready var _audio_ = $AnimationPlayer
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 
 enum {MOVE,ATTACK,DEATH,IDLE,JUMP}
-=======
-enum {MOVE, ATTACK,DEATH}
->>>>>>> parent of 6a17345 (Merge)
 =======
 enum {MOVE, ATTACK,DEATH}
 >>>>>>> parent of 6a17345 (Merge)
