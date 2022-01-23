@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 [gd_scene load_steps=66 format=2]
+=======
+[gd_scene load_steps=68 format=2]
+>>>>>>> 2bed9a9f2e81dd9bef4fb55d4da2ed58eae4ac92
 
 [ext_resource path="res://personnage/personnage.gd" type="Script" id=1]
 [ext_resource path="res://texture/perso_sprites/Jump.png" type="Texture" id=2]
@@ -11,6 +15,7 @@
 [ext_resource path="res://soundeffect/Respiration homme essouffle (ID 1103)_LS.mp3" type="AudioStream" id=9]
 [ext_resource path="res://soundeffect/Enregistrement.mp3" type="AudioStream" id=10]
 [ext_resource path="res://soundeffect/Body Impacts Sound Effect.mp3" type="AudioStream" id=11]
+[ext_resource path="res://soundeffect/mort.mp3" type="AudioStream" id=12]
 
 [sub_resource type="Animation" id=57]
 resource_name = "Fly"
@@ -95,6 +100,7 @@ tracks/0/keys = {
 "update": 0,
 "values": [ 0.0 ]
 }
+<<<<<<< HEAD
 tracks/1/type = "value"
 tracks/1/path = NodePath("../Death:frame")
 tracks/1/interp = 1
@@ -155,10 +161,11 @@ tracks/5/keys = {
 "update": 0,
 "values": [ true ]
 }
+=======
+>>>>>>> 2bed9a9f2e81dd9bef4fb55d4da2ed58eae4ac92
 
 [sub_resource type="Animation" id=51]
 resource_name = "attack_sound"
-length = 0.5
 tracks/0/type = "audio"
 tracks/0/path = NodePath("../Attack/Attackaudio")
 tracks/0/interp = 1
@@ -168,7 +175,7 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "clips": [ {
 "end_offset": 0.0,
-"start_offset": 0.2,
+"start_offset": 0.0,
 "stream": ExtResource( 8 )
 } ],
 "times": PoolRealArray( 0 )
@@ -186,6 +193,27 @@ tracks/1/keys = {
 "values": [ 0.0 ]
 }
 
+<<<<<<< HEAD
+=======
+[sub_resource type="Animation" id=56]
+resource_name = "death_sound"
+length = 2.0
+tracks/0/type = "audio"
+tracks/0/path = NodePath("../Attack/Attackaudio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.29,
+"stream": ExtResource( 12 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
+>>>>>>> 2bed9a9f2e81dd9bef4fb55d4da2ed58eae4ac92
 [sub_resource type="Animation" id=53]
 resource_name = "idle_sound"
 length = 10.0
@@ -518,13 +546,13 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=15]
-extents = Vector2( 20.5, 26 )
+extents = Vector2( 16.5, 26 )
 
 [sub_resource type="RectangleShape2D" id=37]
 extents = Vector2( 11.5, 22.5 )
 
 [sub_resource type="RectangleShape2D" id=38]
-extents = Vector2( 34.5, 30 )
+extents = Vector2( 9.75, 31.75 )
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
 position = Vector2( 601, 325 )

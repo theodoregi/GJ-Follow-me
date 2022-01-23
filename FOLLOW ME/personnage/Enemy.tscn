@@ -154,7 +154,7 @@ collision_layer = 128
 collision_mask = 0
 
 [node name="death_shape_enemy" type="CollisionShape2D" parent="death_enemy"]
-position = Vector2( 12.4375, -5.875 )
+position = Vector2( 8, 1 )
 shape = SubResource( 11 )
 
 [connection signal="area_entered" from="attack_enemy" to="." method="_attack_enemy_area_entered"]

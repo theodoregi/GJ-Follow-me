@@ -82,6 +82,7 @@ func move_character():
 	_animated_sprite_idle.hide()
 	$Timer.stop()
 
+
 func idle_character():
 	_animated_sprite_run.hide()
 	_animated_sprite_jump.hide()
@@ -89,10 +90,9 @@ func idle_character():
 	_animated_sprite_attack.hide()
 	_animated_sprite_idle.show()
 	_animated_sprite_idle.play()
-	
+
 
 func jump_character():
-
 	if ($Timer.time_left == 0):
 		$Timer.start(0.7)
 		_audio_.stop()
@@ -104,7 +104,6 @@ func jump_character():
 	_animated_sprite_death.hide()
 	_animated_sprite_attack.hide()
 	_animated_sprite_idle.hide()
-
 
 func _death_area_entered(area):
 	if !state==ATTACK:
