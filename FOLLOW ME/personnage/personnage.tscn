@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=67 format=2]
 
 [ext_resource path="res://personnage/personnage.gd" type="Script" id=1]
 [ext_resource path="res://texture/perso_sprites/Jump.png" type="Texture" id=2]
@@ -10,7 +10,7 @@
 [ext_resource path="res://soundeffect/SWSH_Whoosh 3 (ID 1795)_LS.mp3" type="AudioStream" id=8]
 [ext_resource path="res://soundeffect/Respiration homme essouffle (ID 1103)_LS.mp3" type="AudioStream" id=9]
 [ext_resource path="res://soundeffect/Enregistrement.mp3" type="AudioStream" id=10]
-[ext_resource path="res://soundeffect/mort.mp3" type="AudioStream" id=11]
+[ext_resource path="res://soundeffect/Body Impacts Sound Effect.mp3" type="AudioStream" id=11]
 
 [sub_resource type="Animation" id=54]
 length = 0.001
@@ -26,9 +26,22 @@ tracks/0/keys = {
 "update": 0,
 "values": [ 0.0 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Death:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 4 ]
+}
 
 [sub_resource type="Animation" id=51]
 resource_name = "attack_sound"
+length = 0.5
 tracks/0/type = "audio"
 tracks/0/path = NodePath("../Attack/Attackaudio")
 tracks/0/interp = 1
@@ -38,7 +51,7 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "clips": [ {
 "end_offset": 0.0,
-"start_offset": 0.0,
+"start_offset": 0.2,
 "stream": ExtResource( 8 )
 } ],
 "times": PoolRealArray( 0 )
@@ -57,21 +70,48 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=56]
-resource_name = "death_sound"
-length = 2.0
-tracks/0/type = "audio"
-tracks/0/path = NodePath("../Attack/Attackaudio")
+resource_name = "revovery"
+length = 0.7
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Death:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 7, 9, 8, 7, 6, 0 ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("../Attack/Attackaudio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
 "clips": [ {
 "end_offset": 0.0,
-"start_offset": 0.29,
+"start_offset": 2.9,
 "stream": ExtResource( 11 )
 } ],
 "times": PoolRealArray( 0 )
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "end_recovery"
+} ]
 }
 
 [sub_resource type="Animation" id=53]
@@ -132,6 +172,50 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=57]
+resource_name = "revovery"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Death:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 8, 9, 8, 5, 2 ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("../Attack/Attackaudio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 3.7,
+"start_offset": 3.0,
+"stream": ExtResource( 11 )
+} ],
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "end_recovery"
+} ]
 }
 
 [sub_resource type="Animation" id=52]
@@ -406,13 +490,13 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=15]
-extents = Vector2( 16.5, 26 )
+extents = Vector2( 20.5, 26 )
 
 [sub_resource type="RectangleShape2D" id=37]
 extents = Vector2( 11.5, 22.5 )
 
 [sub_resource type="RectangleShape2D" id=38]
-extents = Vector2( 9.75, 31.75 )
+extents = Vector2( 34.5, 30 )
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
 position = Vector2( 601, 325 )
@@ -426,6 +510,7 @@ anims/attack_sound = SubResource( 51 )
 anims/death_sound = SubResource( 56 )
 anims/idle_sound = SubResource( 53 )
 anims/jump_sound = SubResource( 55 )
+anims/revovery = SubResource( 57 )
 anims/run_music = SubResource( 52 )
 
 [node name="Jump" type="AnimatedSprite" parent="."]
@@ -440,11 +525,12 @@ frames = SubResource( 36 )
 frame = 3
 
 [node name="Attackaudio" type="AudioStreamPlayer2D" parent="Attack"]
-stream = ExtResource( 8 )
+stream = ExtResource( 11 )
 area_mask = 0
 
 [node name="Death" type="AnimatedSprite" parent="."]
 frames = SubResource( 28 )
+frame = 4
 
 [node name="Idle" type="AnimatedSprite" parent="."]
 frames = SubResource( 50 )

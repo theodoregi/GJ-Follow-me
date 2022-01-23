@@ -30,10 +30,10 @@ func _physics_process(delta):
 	velocity.y += delta * GRAVITY
 	velocity.x =WALK_SPEED
 	check_attack_area()
-	#cloud_protection()
-	#check_attack_area()
-	#if (!have_falling):
-		#sound_effect(state)
+	cloud_protection()
+	check_attack_area()
+	if (!have_falling):
+		sound_effect(state)
 	if state==DEATH:
 		velocity.x=0
 		death_character()
@@ -43,8 +43,8 @@ func _physics_process(delta):
 	elif !is_on_floor() :
 		jump_character()
 		state=JUMP
-	#elif have_falling:
-		#recovery_character()
+	elif have_falling:
+		recovery_character()
 	elif state==ATTACK or (Input.is_action_just_pressed("attack") and is_on_floor()) :
 		_attack()
 		state=ATTACK
@@ -55,8 +55,6 @@ func _physics_process(delta):
 		state=MOVE
 		move_character()
 	velocity=move_and_slide(velocity,UP)
-	#print(state==ATTACK)
-	sound_effect(state)
 	
 func sound_effect(state1):
 	if state1==MOVE :
@@ -76,7 +74,7 @@ func move_character():
 	_animated_sprite_death.hide()
 	_animated_sprite_attack.hide()
 	_animated_sprite_idle.hide()
-	#$Timer.stop()
+	$Timer.stop()
 
 func idle_character():
 	_animated_sprite_run.hide()
@@ -88,11 +86,12 @@ func idle_character():
 	
 
 func jump_character():
-	#if ($Timer.time_left == 0):
-	#	$Timer.start(0.6)
-	#	_audio_.stop()
-	#if ($Timer.time_left < 0.1):
-	#	have_falling = true
+
+	if ($Timer.time_left == 0):
+		$Timer.start(0.7)
+		_audio_.stop()
+	if ($Timer.time_left < 0.1):
+		have_falling = true
 	_animated_sprite_run.hide()
 	_animated_sprite_jump.show()
 	_animated_sprite_jump.play()
@@ -123,7 +122,7 @@ func recovery_character():
 	_animated_sprite_attack.hide()
 	_animated_sprite_idle.hide()
 	velocity = Vector2.ZERO
-	#_audio_.play("recovery")
+	_audio_.play("revovery")
 
 
 func end_recovery():
