@@ -29,6 +29,7 @@ func _ready():
 func _physics_process(delta):
 	velocity.y += delta * GRAVITY
 	velocity.x =WALK_SPEED
+	check_attack_area()
 	if state==DEATH:
 		velocity.x=0
 		death_character()
@@ -48,6 +49,7 @@ func _physics_process(delta):
 		state=MOVE
 		move_character()
 	velocity=move_and_slide(velocity,UP)
+	print(state==ATTACK)
 	sound_effect(state)
 	
 func sound_effect(state1):
@@ -87,7 +89,8 @@ func jump_character():
 	_animated_sprite_idle.hide()
 
 func _death_area_entered(_area):
-	state=DEATH
+	if !state==ATTACK:
+		state=DEATH
 
 func death_character():
 	_animated_sprite_run.hide()
@@ -111,8 +114,16 @@ func _attack():
 	state=ATTACK
 	if !_timer.get_time_left()>0:
 		_animated_sprite_attack.frame = 0
-		_timer.start(0.5)
-		
+		_timer.start(1)
+
+
+func check_attack_area():
+	if state==ATTACK:
+		$attack.set_monitoring(true)
+		$attack.set_monitorable(true)
+	else:
+		$attack.set_monitoring(false)
+		$attack.set_monitorable(false)
 
 func place_object(node):
 	node.global_position = get_global_mouse_position()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=67 format=2]
 
 [ext_resource path="res://personnage/personnage.gd" type="Script" id=1]
 [ext_resource path="res://texture/perso_sprites/Jump.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://soundeffect/Respiration homme essouffle (ID 1103)_LS.mp3" type="AudioStream" id=9]
 [ext_resource path="res://soundeffect/Enregistrement.mp3" type="AudioStream" id=10]
 [ext_resource path="res://soundeffect/mort.mp3" type="AudioStream" id=11]
+[ext_resource path="res://soundeffect/SWSH_Whoosh 2 (ID 0573)_LS.mp3" type="AudioStream" id=12]
 
 [sub_resource type="Animation" id=54]
 length = 0.001
@@ -441,7 +442,7 @@ frames = SubResource( 36 )
 frame = 3
 
 [node name="Attackaudio" type="AudioStreamPlayer2D" parent="Attack"]
-stream = ExtResource( 11 )
+stream = ExtResource( 12 )
 area_mask = 0
 
 [node name="Death" type="AnimatedSprite" parent="."]
