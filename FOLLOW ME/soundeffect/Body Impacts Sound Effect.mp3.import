@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Body Impacts Sound Effect.mp3-d9a01a973b254a14cd0006665ae7e18c.mp3str"
+
+[deps]
+
+source_file="res://soundeffect/Body Impacts Sound Effect.mp3"
+dest_files=[ "res://.import/Body Impacts Sound Effect.mp3-d9a01a973b254a14cd0006665ae7e18c.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

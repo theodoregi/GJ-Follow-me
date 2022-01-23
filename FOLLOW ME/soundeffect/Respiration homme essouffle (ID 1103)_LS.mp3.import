@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Respiration homme essouffle (ID 1103)_LS.mp3-8efb2ed4108143952950f46bef1c3c2c.mp3str"
+
+[deps]
+
+source_file="res://soundeffect/Respiration homme essouffle (ID 1103)_LS.mp3"
+dest_files=[ "res://.import/Respiration homme essouffle (ID 1103)_LS.mp3-8efb2ed4108143952950f46bef1c3c2c.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
