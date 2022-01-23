@@ -30,6 +30,7 @@ func _physics_process(delta):
 	velocity.y += delta * GRAVITY
 	velocity.x =WALK_SPEED
 	cloud_protection()
+	check_attack_area()
 	if (! have_falling):
 		sound_effect(state)
 	if state==DEATH:
@@ -81,6 +82,7 @@ func idle_character(delta):
 func jump_character(delta):
 	if ($Timer.time_left == 0):
 		$Timer.start(0.6)
+		_audio_.stop()
 	if ($Timer.time_left < 0.1):
 		have_falling = true
 	_animated_sprite_run.hide()
@@ -92,8 +94,9 @@ func jump_character(delta):
 	
 			
 
-func _death_area_entered(area):
-	state=DEATH
+func _death_area_entered(_area):
+	if !state==ATTACK:
+		state=DEATH
 
 func death_character(delta):
 	_animated_sprite_run.hide()
@@ -106,6 +109,7 @@ func death_character(delta):
 		queue_free()
 
 func recovery_character():
+	
 	_animated_sprite_run.hide()
 	_animated_sprite_jump.hide()
 	_animated_sprite_death.show()
@@ -135,9 +139,18 @@ func _attack(delta):
 func cloud_protection():
 	for i in get_slide_count():
 		var collision = get_slide_collision(i)
-		if collision && collision.collider.name == "Cloud":
+		if collision.collider && collision.collider.name == "Cloud":
 			have_falling=false
-			
+
+
+func check_attack_area():
+	if state==ATTACK:
+		$attack.set_monitoring(true)
+		$attack.set_monitorable(true)
+	else:
+		$attack.set_monitoring(false)
+		$attack.set_monitorable(false)
+	
 func place_object(node):
 	node.global_position = get_global_mouse_position()
 
