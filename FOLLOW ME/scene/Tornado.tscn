@@ -34,7 +34,7 @@ animations = [ {
 
 [sub_resource type="Animation" id=6]
 resource_name = "sound"
-length = 1.8
+length = 2.2
 loop = true
 tracks/0/type = "audio"
 tracks/0/path = NodePath("AudioStreamPlayer")
@@ -44,8 +44,8 @@ tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "clips": [ {
-"end_offset": 4.14679,
-"start_offset": 1.9,
+"end_offset": 4.0,
+"start_offset": 1.6,
 "stream": ExtResource( 2 )
 } ],
 "times": PoolRealArray( 0 )

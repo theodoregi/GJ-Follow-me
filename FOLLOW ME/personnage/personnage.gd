@@ -10,8 +10,12 @@ onready var _animated_sprite_idle = $Idle
 onready var _timer = $Timer
 onready var _audio_ = $AnimationPlayer
 
+<<<<<<< HEAD
 
 enum {MOVE,ATTACK,DEATH,IDLE,JUMP}
+=======
+enum {MOVE, ATTACK,DEATH}
+>>>>>>> parent of 6a17345 (Merge)
 
 const GRAVITY = 3000
 const WALK_SPEED = 300
