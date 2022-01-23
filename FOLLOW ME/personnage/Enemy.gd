@@ -12,7 +12,6 @@ const UP = Vector2(0, -1)
 enum {MOVE, ATTACK,DEATH}
 
 var state=MOVE
-var death_value=0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,15 +19,14 @@ func _ready():
 
 func _physics_process(delta):
 	velocity.y += delta * GRAVITY
-	if state==DEATH or death_value==1:
-		death_value=1
+	if state==DEATH:
 		death_enemy()
 		state=DEATH
 	elif state==MOVE:
 		idle_enemy()
 	elif state==ATTACK:
 		attack_enemy()
-	print(state==DEATH)
+	print(state)
 	check_area()
 	velocity=move_and_slide(velocity,UP)
 
@@ -65,7 +63,7 @@ func _death_enemy_area_entered(_area):
 	state=DEATH
 	
 func _attack_enemy_area_entered(_area):
-	if !state==DEATH:
+	if state!=DEATH:
 		state=ATTACK
 
 func check_area():
