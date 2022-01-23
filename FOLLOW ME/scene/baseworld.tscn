@@ -523,7 +523,6 @@ font_data = SubResource( 74 )
 [node name="Level 0" type="Node2D"]
 
 [node name="UI" parent="." instance=ExtResource( 1 )]
-nb_dig = 3
 
 [node name="TileMapMossy" type="TileMap" parent="."]
 scale = Vector2( 0.063, 0.063 )

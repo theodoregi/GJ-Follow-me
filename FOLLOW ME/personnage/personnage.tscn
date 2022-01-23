@@ -274,7 +274,7 @@ animations = [ {
 "frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
 "loop": true,
 "name": "default",
-"speed": 7.0
+"speed": 14.0
 } ]
 
 [sub_resource type="AtlasTexture" id=29]
