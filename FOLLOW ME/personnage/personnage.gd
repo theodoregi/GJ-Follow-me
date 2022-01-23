@@ -98,7 +98,6 @@ func jump_character():
 	_animated_sprite_attack.hide()
 	_animated_sprite_idle.hide()
 
-
 func _death_area_entered(_area):
 	if !state==ATTACK:
 		state=DEATH
