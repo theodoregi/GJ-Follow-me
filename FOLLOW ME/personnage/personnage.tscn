@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=2]
+[gd_scene load_steps=66 format=2]
 
 [ext_resource path="res://personnage/personnage.gd" type="Script" id=1]
 [ext_resource path="res://texture/perso_sprites/Jump.png" type="Texture" id=2]
@@ -203,50 +203,6 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0.0 ]
-}
-
-[sub_resource type="Animation" id=56]
-resource_name = "revovery"
-length = 0.7
-tracks/0/type = "value"
-tracks/0/path = NodePath("../Death:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 4, 7, 9, 8, 7, 6, 0 ]
-}
-tracks/1/type = "audio"
-tracks/1/path = NodePath("../Attack/Attackaudio")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"clips": [ {
-"end_offset": 0.0,
-"start_offset": 2.9,
-"stream": ExtResource( 11 )
-} ],
-"times": PoolRealArray( 0 )
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath("..")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.6 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "end_recovery"
-} ]
 }
 
 [sub_resource type="Animation" id=52]
@@ -542,7 +498,7 @@ anims/RESET = SubResource( 54 )
 anims/attack_sound = SubResource( 51 )
 anims/idle_sound = SubResource( 53 )
 anims/jump_sound = SubResource( 55 )
-anims/revovery = SubResource( 56 )
+anims/revovery = SubResource( 57 )
 anims/run_music = SubResource( 52 )
 
 [node name="Jump" type="AnimatedSprite" parent="."]

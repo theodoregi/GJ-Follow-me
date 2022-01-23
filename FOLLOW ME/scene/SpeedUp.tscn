@@ -22,7 +22,7 @@ scale = Vector2( 4, 4 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-frame = 3
+frame = 4
 playing = true
 
 [node name="SpeedUpZone" type="Area2D" parent="."]
