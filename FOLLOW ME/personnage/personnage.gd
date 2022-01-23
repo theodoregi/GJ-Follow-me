@@ -24,36 +24,42 @@ const RIGHT=Vector2(1,0)
 var have_falling = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	$Collision.disabled=false
 
 func _physics_process(delta):
-	velocity.y += delta * GRAVITY
-	velocity.x =WALK_SPEED
-	check_attack_area()
-	cloud_protection()
-	check_attack_area()
+	print(state)
+	
 	if (!have_falling):
 		sound_effect(state)
+		
 	if state==DEATH:
 		velocity.x=0
 		death_character()
-	elif Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y=-JUMP_HIGH
-		state=JUMP
-	elif !is_on_floor() :
-		jump_character()
-		state=JUMP
-	elif have_falling:
-		recovery_character()
-	elif state==ATTACK or (Input.is_action_just_pressed("attack") and is_on_floor()) :
-		_attack()
-		state=ATTACK
-	elif is_on_wall() :
-		state=IDLE
-		idle_character()
 	else:
-		state=MOVE
-		move_character()
+		velocity.y += delta * GRAVITY
+		velocity.x =WALK_SPEED
+		check_attack_area()
+		cloud_protection()
+		check_attack_area()
+		
+		if Input.is_action_just_pressed("jump") and is_on_floor():
+			velocity.y=-JUMP_HIGH
+			state=JUMP
+		elif !is_on_floor() and state!=DEATH :
+			jump_character()
+			state=JUMP
+		elif have_falling:
+			recovery_character()
+		elif state==ATTACK or (Input.is_action_just_pressed("attack") and is_on_floor()) :
+			_attack()
+			state=ATTACK
+		elif is_on_wall() and state!=DEATH :
+			state=IDLE
+			idle_character()
+		else:
+			state=MOVE
+			move_character()
+	
 	velocity=move_and_slide(velocity,UP)
 	
 func sound_effect(state1):
@@ -63,8 +69,8 @@ func sound_effect(state1):
 		_audio_.play("jump_sound")
 	elif state1==IDLE :
 		_audio_.play("idle_sound")
-	elif state1==DEATH:
-		_audio_.play("death_sound")
+	#elif state1==DEATH:
+	#	_audio_.play("death_sound")
 
 
 func move_character():
@@ -106,16 +112,16 @@ func _death_area_entered(area):
 		if (area.name=="TornadoArea"):
 			_audio_.play("Fly")
 
-
 func death_character():
+	print(_animated_sprite_death.frame)
 	_animated_sprite_run.hide()
 	_animated_sprite_jump.hide()
 	_animated_sprite_idle.hide()
 	_animated_sprite_attack.hide()
 	_animated_sprite_death.show()
 	_animated_sprite_death.play()
-	if _animated_sprite_death.frame==10: 
-		queue_free()
+	if _animated_sprite_death.frame==9:
+		retrylevel()
 
 func recovery_character():
 	_animated_sprite_run.hide()
@@ -169,3 +175,8 @@ func place_object(node):
 func _on_Timer_timeout():
 	state=MOVE
 
+func retrylevel():
+	get_tree().change_scene("res://scene/Levels/Level"+str(int(get_tree().current_scene.name))+".tscn")
+	
+func nextlevel():
+	get_tree().change_scene("res://scene/Levels/Level"+str(int(get_tree().current_scene.name) + 1)+".tscn")

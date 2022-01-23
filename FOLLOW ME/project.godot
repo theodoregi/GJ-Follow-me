@@ -26,6 +26,10 @@ attack={
 "deadzone": 0.5,
 "events": [  ]
 }
+jump={
+"deadzone": 0.5,
+"events": [  ]
+}
 
 [physics]
 
