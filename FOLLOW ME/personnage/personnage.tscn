@@ -98,24 +98,6 @@ tracks/1/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=56]
-resource_name = "death_sound"
-length = 2.0
-tracks/0/type = "audio"
-tracks/0/path = NodePath("../Attack/Attackaudio")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"clips": [ {
-"end_offset": 0.0,
-"start_offset": 0.29,
-"stream": ExtResource( 12 )
-} ],
-"times": PoolRealArray( 0 )
-}
-
 [sub_resource type="Animation" id=53]
 resource_name = "idle_sound"
 length = 10.0
