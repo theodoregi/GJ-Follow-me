@@ -9,6 +9,7 @@ onready var _animated_sprite_attack = $Attack
 onready var _animated_sprite_idle = $Idle
 onready var _timer = $Timer
 onready var _audio_ = $AnimationPlayer
+onready var dead = false
 
 
 enum {MOVE,ATTACK,DEATH,IDLE,JUMP}
@@ -27,40 +28,47 @@ func _ready():
 	$Collision.disabled=false
 
 func _physics_process(delta):
-	print(state)
 	
-	if (!have_falling):
-		sound_effect(state)
-		
-	if state==DEATH:
-		velocity.x=0
+	if dead:
 		death_character()
-	else:
-		velocity.y += delta * GRAVITY
-		velocity.x =WALK_SPEED
-		check_attack_area()
-		cloud_protection()
-		check_attack_area()
-		
-		if Input.is_action_just_pressed("jump") and is_on_floor():
-			velocity.y=-JUMP_HIGH
-			state=JUMP
-		elif !is_on_floor() and state!=DEATH :
-			jump_character()
-			state=JUMP
-		elif have_falling:
-			recovery_character()
-		elif state==ATTACK or (Input.is_action_just_pressed("attack") and is_on_floor()) :
-			_attack()
-			state=ATTACK
-		elif is_on_wall() and state!=DEATH :
-			state=IDLE
-			idle_character()
-		else:
-			state=MOVE
-			move_character()
 	
-	velocity=move_and_slide(velocity,UP)
+	else:
+		if (!have_falling) and state!=DEATH:
+			sound_effect(state)
+			
+		if state==DEATH:
+			velocity.x=0
+			death_character()
+			dead = true
+			print("DEAD")
+			
+		else:
+			velocity.y += delta * GRAVITY
+			velocity.x =WALK_SPEED
+			check_attack_area()
+			cloud_protection()
+			check_attack_area()
+			
+			if Input.is_action_just_pressed("jump") and is_on_floor():
+				velocity.y=-JUMP_HIGH
+				state=JUMP
+			elif !is_on_floor():
+				jump_character()
+				state=JUMP
+			elif have_falling:
+				recovery_character()
+			elif state==ATTACK or (Input.is_action_just_pressed("attack") and is_on_floor()) :
+				_attack()
+				state=ATTACK
+			elif is_on_wall():
+				state=IDLE
+				idle_character()
+			else:
+				state=MOVE
+				move_character()
+				
+			velocity=move_and_slide(velocity,UP)
+	
 	
 func sound_effect(state1):
 	if state1==MOVE :
@@ -112,14 +120,14 @@ func _death_area_entered(area):
 			_audio_.play("Fly")
 
 func death_character():
-	print(_animated_sprite_death.frame)
+	print("frame=", _animated_sprite_death.frame)
 	_animated_sprite_run.hide()
 	_animated_sprite_jump.hide()
 	_animated_sprite_idle.hide()
 	_animated_sprite_attack.hide()
 	_animated_sprite_death.show()
 	_animated_sprite_death.play()
-	if _animated_sprite_death.frame==9:
+	if _animated_sprite_death.frame>9:
 		retrylevel()
 
 func recovery_character():
